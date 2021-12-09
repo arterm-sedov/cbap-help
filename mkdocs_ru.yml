@@ -1,0 +1,14 @@
+INHERIT: mkdocs_common.yml
+
+site_name: Справка Comindware Business Application Platform
+docs_dir: docs/ru
+    
+theme:
+    language: ru
+
+site_dir: ../web/help/ru
+
+copyright: '<a href="https://www.comindware.com/ru/" target="_blank">© 2009–2021 Comindware<sup>®</sup></a>. Тема: '
+
+extra:
+    kbSite: https://kb.comindware.com/index.php?ln=ru

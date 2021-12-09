@@ -1,0 +1,44 @@
+theme:
+  name: material
+  language: en
+  palette:
+    scheme: comindware
+  logo: /resources/icons/cmw_small_icon.png
+  favicon: /Theme/GetDefaultFavicon
+  custom_dir: overrides
+  features:
+    - navigation.tracking
+    - navigation.expand
+    - navigation.top
+    - navigation.sections
+    - navigation.indexes
+
+extra_css:
+  - /help/stylesheets/extra.css
+
+extra:
+  productName: '<strong>Comindware Business Application Platform</strong>'
+
+plugins:
+  - search:
+      lang:
+          - en
+          - ru
+  - macros
+  - autolinks
+  - autorefs
+  - awesome-pages
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+          remove_comments: true
+
+markdown_extensions:
+  - meta
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - toc:
+      slugify: !!python/name:pymdownx.slugs.uslugify  

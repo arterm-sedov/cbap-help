@@ -1,0 +1,37 @@
+@import "/Theme/GetDefaultThemeStyles";
+
+[data-md-color-scheme="comindware"] {
+    --md-primary-fg-color: var(--theme-colors__primary);
+    --md-primary-fg-color--light: var(--theme-colors__primary_fadest);
+    --md-primary-fg-color--dark: var(--theme-colors__primary_strong);
+    --md-footer-bg-color: var(--theme-colors__primary);
+    --md-footer-bg-color--dark: var(--theme-colors__primary_strong);
+}
+
+:root {
+    --md-text-font-family: var(--base-font-family);
+  }
+
+
+body  {
+    background: var(--md-primary-bg-color);
+    background-image: '';
+}
+
+.md-typeset figure img {
+    display: inline;
+}
+
+.md-typeset figure p {
+    margin: 0;
+}
+
+.md-typeset figcaption {
+    margin: 0em auto 0em;
+    max-width: 100%;
+}
+
+.md-typeset figure {
+    max-width: 100%;
+    text-align: center;
+}

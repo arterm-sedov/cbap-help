@@ -1,0 +1,21 @@
+INHERIT: mkdocs_common.yml
+
+site_name: Comindware Business Application Platform Help
+
+docs_dir: docs/en
+
+site_dir: ../web/help/en
+
+markdown_extensions:
+  - meta
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - toc:
+      title: Section content
+      slugify: !!python/name:pymdownx.slugs.uslugify
+
+copyright: '<a href="https://www.comindware.com/" target="_blank">© 2009–2021 Comindware<sup>®</sup></a>. Theme: '
+
+extra:
+  kbSite: https://kb.comindware.com/index.php?ln=en

@@ -1,0 +1,9 @@
+INHERIT: mkdocs_ru.yml
+
+site_url: http://127.0.0.1/help/ru
+
+extra:
+  alternate:
+    - name: English
+      link: http://127.0.0.2:8000/help/en/
+      lang: en

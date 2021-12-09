@@ -1,0 +1,10 @@
+INHERIT: mkdocs_en.yml
+
+dev_addr: 127.0.0.2:8000
+site_url: http://127.0.0.1/help/en
+
+extra:
+  alternate:
+    - name: Русский
+      link: http://127.0.0.1:8000/help/ru/
+      lang: ru
