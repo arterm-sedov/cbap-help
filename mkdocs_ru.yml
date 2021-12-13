@@ -1,3 +1,7 @@
+# This file configures the Russian help to be build as Web/help/ru
+# But it does not copy the stylesheets\extra.css
+# Run `py buildhelp.py` to actually build the help with all the dependencies
+
 INHERIT: mkdocs_common.yml
 
 site_name: Справка Comindware Business Application Platform
@@ -6,7 +10,7 @@ docs_dir: docs/ru
 theme:
     language: ru
 
-site_dir: ../web/help/ru
+site_dir: ../Web/help/ru
 
 copyright: '<a href="https://www.comindware.com/ru/" target="_blank">© 2009–2021 Comindware<sup>®</sup></a>. Тема: '
 

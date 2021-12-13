@@ -1,42 +1,79 @@
 # How to initialize the environment and build help files
 
-1. Install Python, MkDocs, and dependencies:
-    * If you do not have Python, cd to <Help\install> folder, run <install\installpymkd.ps1> — downloads and silently installs Python 3.10.1, then installs all MKDocs dependencies listed in the requirements.txt config file
-    * If Python 3.10 is present in your system, cd to <Web> folder, execute <npm run installhelp> — installs all MKDocs dependencies listed in the requirements.txt config file
-2. Execute <npm run buildhelp> — builds all languages help to <\web\help\>. The <npm run buildhelp> script is also executed with <npm run build> after the <localization> task.
-3. Build and run the product normally. Switch to Russian language. You should see the Help question sign to the left of the search button in the top bar.
+**Note: Python is not used in runitime**, it is only used to build the static HTML site from the source .MD files.
 
-Python is not used in runitime at all, only to build the static HTML site from MD files.
+1. Install Python, if you do not have it:
 
-# To serve Russian docs locally to http://127.0.0.1:8000 use this command (the server watches edits and rebuilds on the fly)
+* Change dir to `Help\install`
 
-py -m mkdocs serve -f mkdocs_ru.yml
+* Run `install\installpy.ps1`
+    * this script downloads and silently installs the latest Python from _python.org_ (icluding the `pip` package manager).
 
-NO CUSTOM CSS IS APPLIED THIS WAY!!!
+2. Install MkDocs and dependencies (when you have Python):
 
-To see the Help with Comindware Business Application CSS (including dynamic theme CSS linking), build the docs and run the CBAP.
+* Change dir to `Help\install` (if you are not there yet)
 
-# To build Russian docs locally to \web\help\ru\ use this command:
+* Run  `installmkdocs.ps1`
+    * this script installs all MKDocs dependencies listed in the `requirements.txt` config file and has only one command:
+        * `py -m pip install -U -r requirements.txt`
 
-py -m mkdocs build -f mkdocs_ru.yml
+3. Build the help files to `Web\help`
 
-Then run <npm run build> or <npm run start> to see the Help system in action
+* Change dir to `Help` under the solution root folder.
+    
+    * Execute `py buildhelp.py` — builds languages help to `Web\help`.
 
-# Installation and build commands
+    * The language list is set in `line 23` in `buildhelp.py` as an array:
+        
+        `LANGUAGE_LIST = ["en", "ru"]`
 
-* install\installpymkd.ps1 — downloads and silently installs Python 3.10.1, then installs all MKDocs dependencies listed in the requirements.txt config file
+    * The `py buildhelp` script can also be executed with:
+        
+        `npm run buildhelp`
 
-* install\uninstallpymkd.ps1 — uninstalls Python and all MKDocs dependencies listed in the requirements.txt config file
+    * You should see the newly compiled help subfolders in the `Web\help` folder:
+        * en
+        * ru
+        * stylesheets
 
-* npm run buildhelp - builds all languages help to <\web\help\>
-    - the list of languages to build help for is defined in the  localizedLanguages array at js\build\buildHelpTask.js
+3. Build and run the product normally and see the Help system in action.
 
-* npm run installhelp - installs all MKDocs dependencies listed in the requirements.txt config file
-                        DOES NOT INSTALL THE PYTHON
+    * Change dir to `Web` within the solution root folder.
+    * Execute `npm run build` or `npm run start`.
+    * You should see the Help question sign to the left of the search button in the top bar:
+        * The CSS is pulled dynamically from the current theme.
+        * The help is displayed in the current CBAP language.
+        * The help is context dependent: it shows the topic for the current module.
+    
+            See the help button and context resolver code:
+            `js\modules\shared\view\help\HelpPathMappingService.js`
+            `js\modules\shared\view\help\HelpButtonView.js`
+            `js\modules\shared\view\NavigationToolbarView.js` _line 137_
+
+# Testing: running and authoring the help without building it or compiling the product
+To serve both English and Russian docs locally at http://127.0.0.1:8000 
+
+* Change dir to `Help` under the solution root folder.
+* Execute the command:
+
+`mkdocs serve` (or `py -m mkdocs serve`)
+
+**NOTE:**
+* The help is not build by, it is only served locally to http://127.0.0.1:8000.
+* The server watches for edits in the `Help\docs` folder and updates the help on the fly. Any edits you make in the `docs` folder will be immediately reflected at http://127.0.0.1:8000.
+* _At http://127.0.0.1:8000 you will see En and Ru help navigation tree together, **this is different from the single language view in the actual product**. Within CBAP the help only shows in the current language and **the left navigation bar looks different fro the locally served one**._
+* _The navigation at http://127.0.0.1:8000 will be in Russian per the theme.language setting in the mkdocs_en_ru_local.yml_, while in CBAP the navigation language changes per the CBAP language.
+* _The CSS is not dynamically pulled from the CBAP to http://127.0.0.1:8000_
+
+# Uninstallation scripts
+
+* `install\uninstallmkdocs.ps1` — uninstalls installs all MKDocs dependencies listed in the `requirements.txt` config file, runs a single command: `py -m pip uninstall -y -r requirements.txt`
+
+* `install\uninstallpy.ps1` — silently uninstalls Python, runs a single command: `.\python_latest.exe /uninstall /quiet`
 
 # The help is powered by the very popular and well-maintained MkDocs framework: 
 https://squidfunk.github.io/mkdocs-material/ 
 https://github.com/squidfunk/mkdocs-material
 https://www.mkdocs.org/
 
-It is trusted by Atlassian, Mozilla, Google, Microsoft, Adruino, etc...
+This framework is trusted by Atlassian, Mozilla, Google, Microsoft, Adruino, etc...

@@ -1,0 +1,19 @@
+# This file is used for local authoring and testing of the help system without actually building the help or the product
+# To test and author the English and Russian help together run:
+# py -m mkdocs serve (`mkdocs serve` might also work depending on the environment PATH variable)
+
+
+INHERIT: mkdocs_ru.yml
+
+docs_dir: docs/
+site_dir: local_test_site/
+
+site_url: http://127.0.0.1/help/
+
+theme:
+  language: ru
+  logo: /help/assets/images/cmw_small_icon.png
+  favicon: /help/assets/images/favicon.png
+
+extra_css:
+  - assets/stylesheets/extra.css

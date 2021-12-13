@@ -14,7 +14,7 @@ theme:
     - navigation.indexes
 
 extra_css:
-  - /help/stylesheets/extra.css
+  - assets/stylesheets/extra.css
 
 extra:
   productName: '<strong>Comindware Business Application Platform</strong>'
@@ -24,10 +24,10 @@ plugins:
       lang:
           - en
           - ru
-  - macros
+  - awesome-pages
   - autolinks
   - autorefs
-  - awesome-pages
+  - macros
   - minify:
       minify_html: true
       minify_js: true
@@ -42,3 +42,4 @@ markdown_extensions:
   - sane_lists
   - toc:
       slugify: !!python/name:pymdownx.slugs.uslugify  
+

@@ -1,0 +1,39 @@
+@import "/Theme/GetDefaultThemeStyles";
+
+[data-md-color-scheme="comindware"] {
+    --md-primary-fg-color: var(--theme-colors__primary,  #0575bd);
+    --md-primary-fg-color--light: var(--theme-colors__primary_fadest, #2FAAF9);
+    --md-primary-fg-color--dark: var(--theme-colors__primary_strong, #04568B);
+    --md-footer-bg-color: var(--md-footer-bg-color);
+    --md-footer-bg-color--dark: var(--md-primary-fg-color--dark);
+}
+
+:root {
+    --md-text-font-family: var(--base-font-family, Roboto, OpenSans);
+  }
+
+
+body  {
+    background: var(--md-primary-bg-color);
+    background-image: '';
+}
+
+.md-typeset figure img {
+    display: inline;
+    border: 1px solid hsl(0, 0%, 90%);
+    max-width: 100%;
+}
+
+.md-typeset figure p {
+    margin: 0;
+}
+
+.md-typeset figcaption {
+    margin: 0em auto 0em;
+    max-width: 100%;
+}
+
+.md-typeset figure {
+    max-width: 100%;
+    text-align: center;
+}
